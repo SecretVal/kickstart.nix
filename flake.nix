@@ -79,17 +79,25 @@
             description = "Kickstart Node.js backend package flake.";
             path = ./template/nodejs-backend;
           };
+
           dart = {
             description = "Kickstart Dart package flake.";
             path = ./template/dart;
           };
+
           zig = {
             description = "Kickstart Zig package flake.";
             path = ./template/zig;
           };
+
           haskell = {
             description = "Kickstart Haskell package flake.";
             path = ./template/haskell;
+          };
+
+          elm = {
+            description = "Kickstart Elm package flake.";
+            path = ./template/elm;
           };
         };
       };
@@ -121,6 +129,7 @@
           example-dart = lib.flake.dart system;
           example-zig = lib.flake.zig system;
           example-haskell = lib.flake.haskell system;
+          example-elm = lib.flake.elm system;
         };
       };
 
