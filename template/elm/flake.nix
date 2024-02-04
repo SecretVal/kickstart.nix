@@ -9,10 +9,8 @@
         systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
         perSystem = { config, self', inputs', pkgs, system, lib, ... }:
           let
-            inherit (pkgs) dockerTools elmPackages nodePackages stdenv;
-            inherit (dockerTools) buildImage;
+            inherit (pkgs) elmPackages nodePackages stdenv;
             name = "example";
-            version = "0.1.0";
           in
           {
             devShells = {
@@ -65,26 +63,14 @@
                         '';
                     };
                 in
-                mkDerivation
-                  {
-                    inherit name;
-                    srcs = ./elm-srcs.nix;
-                    src = ./.;
-                    targets = [ "Main" ];
-                    srcdir = "./src";
-                    outputJavaScript = false;
-                  };
-
-              docker = buildImage {
-                inherit name;
-                tag = version;
-                config = {
-                  Cmd = "${self'.packages.default}/bin/${name}";
-                  Env = [
-                    "SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
-                  ];
+                mkDerivation {
+                  inherit name;
+                  srcs = ./elm-srcs.nix;
+                  src = ./.;
+                  targets = [ "Main" ];
+                  srcdir = "./src";
+                  outputJavaScript = false;
                 };
-              };
             };
           };
       };
