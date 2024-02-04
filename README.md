@@ -28,6 +28,7 @@ Kickstart your Nix environments.
     - [Dart](#dart)
     - [Zig](#zig)
     - [Haskell](#haskell)
+    - [Elm](#elm)
 
 - Systems
     - Linux
@@ -409,6 +410,14 @@ Used for Haskell applications.
 
 ```bash
 nix flake init -t github:ALT-F4-LLC/kickstart.nix#haskell
+```
+
+#### Elm
+
+Used for Elm applications.
+
+```bash
+nix flake init -t github:ALT-F4-LLC/kickstart.nix#elm
 ```
 
 ### Systems
